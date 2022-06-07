@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/alarmsFragment">
+
+    <fragment
+        android:id="@+id/alarmsFragment"
+        android:name="com.hfad.alarmclock.fragments.AlarmsFragment"
+        android:label="fragment_alarms_list"
+        tools:layout="@layout/fragment_alarms_list" >
+        <action
+            android:id="@+id/action_alarmsFragment_to_editAlarmFragment"
+            app:destination="@id/editAlarmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editAlarmFragment"
+        android:name="com.hfad.alarmclock.fragments.EditAlarmFragment"
+        android:label="fragment_edit_alarm"
+        tools:layout="@layout/fragment_edit_alarm" />
+</navigation>
