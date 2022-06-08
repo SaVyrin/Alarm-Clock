@@ -1,4 +1,4 @@
-package com.hfad.alarmclock.fragments
+package com.hfad.alarmclock.fragments.alarms
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.hfad.alarmclock.R
+import com.hfad.alarmclock.fragments.Alarm
 
 /**
  * A fragment representing a list of Items.

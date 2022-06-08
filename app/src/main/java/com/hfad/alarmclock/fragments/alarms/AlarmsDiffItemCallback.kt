@@ -1,6 +1,7 @@
-package com.hfad.alarmclock.fragments
+package com.hfad.alarmclock.fragments.alarms
 
 import androidx.recyclerview.widget.DiffUtil
+import com.hfad.alarmclock.fragments.Alarm
 
 class AlarmsDiffItemCallback: DiffUtil.ItemCallback<Alarm>() {
     override fun areItemsTheSame(oldItem: Alarm, newItem: Alarm): Boolean {

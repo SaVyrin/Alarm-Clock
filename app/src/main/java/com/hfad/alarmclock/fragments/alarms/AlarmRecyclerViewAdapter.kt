@@ -1,10 +1,11 @@
-package com.hfad.alarmclock.fragments
+package com.hfad.alarmclock.fragments.alarms
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
+import com.hfad.alarmclock.fragments.Alarm
 
 class AlarmRecyclerViewAdapter(val clickListener: (taskId: Long) -> Unit) :
     ListAdapter<Alarm, AlarmRecyclerViewAdapter.AlarmViewHolder>(AlarmsDiffItemCallback()) {

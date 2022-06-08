@@ -1,4 +1,4 @@
-package com.hfad.alarmclock.fragments
+package com.hfad.alarmclock.fragments.editalarm
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
