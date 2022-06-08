@@ -5,8 +5,9 @@
     android:id="@+id/nav_host_fragment"
     android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
+    android:background="@color/gray"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingBottom="8dp"
     app:defaultNavHost="true"
     app:navGraph="@navigation/nav_graph"
     tools:context=".MainActivity">
