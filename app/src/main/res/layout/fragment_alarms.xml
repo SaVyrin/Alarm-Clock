@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,21 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="1dp">
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="horizontal"
-            android:padding="8dp">
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:id="@+id/item_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="description"
+                android:text="Описание"
                 android:textAppearance="?attr/textAppearanceListItem"
+                android:textColor="@color/text_gray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
             <!--            android:text="@{alarm.time}"-->
@@ -35,11 +41,11 @@
                 android:id="@+id/content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="time"
+                android:text="06:30"
                 android:textAppearance="?attr/textAppearanceListItem"
-                app:layout_constraintEnd_toEndOf="@+id/item_number"
-                app:layout_constraintStart_toStartOf="@+id/item_number"
+                android:textColor="@color/text_gray"
+                android:textSize="36sp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_number" />
             <!--            android:text="@{alarm.description}"-->
 
@@ -50,16 +56,16 @@
                 android:layout_marginEnd="8dp"
                 android:text="пт, 10 июня"
                 android:textAppearance="?attr/textAppearanceListItem"
+                android:textColor="@color/text_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/chip4"
-                app:layout_constraintTop_toTopOf="@+id/item_number" />
+                app:layout_constraintEnd_toStartOf="@+id/alarm_switch"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip4"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/alarm_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Включен"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
