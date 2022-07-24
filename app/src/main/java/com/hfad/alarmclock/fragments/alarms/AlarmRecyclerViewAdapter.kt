@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
+import com.hfad.alarmclock.databinding.FragmentAlarmsListItemBinding
 import com.hfad.alarmclock.fragments.Alarm
 
 class AlarmRecyclerViewAdapter(val clickListener: (taskId: Long) -> Unit) :
@@ -18,12 +18,12 @@ class AlarmRecyclerViewAdapter(val clickListener: (taskId: Long) -> Unit) :
         holder.bind(item, clickListener)
     }
 
-    class AlarmViewHolder(val binding: FragmentAlarmsBinding) : RecyclerView.ViewHolder(binding.root) {
+    class AlarmViewHolder(val binding: FragmentAlarmsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         companion object {
             fun inflateFrom(parent: ViewGroup): AlarmViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = FragmentAlarmsBinding.inflate(layoutInflater, parent, false)
+                val binding = FragmentAlarmsListItemBinding.inflate(layoutInflater, parent, false)
                 return AlarmViewHolder(binding)
             }
         }
