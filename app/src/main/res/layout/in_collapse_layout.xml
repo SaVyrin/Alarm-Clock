@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/fragment_alarms_list">
+    tools:showIn="@layout/fragment_alarms">
 
     <TextView
         android:id="@+id/next_alarm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="64dp"
         android:text="Будильник через 8ч. 30 мин."
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@id/toolbar"
+        android:textAppearance="@style/Text.RobotoLight.36"
+        android:textColor="@color/main_text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,20 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="сб, 2 июл., 21:55"
-        android:layout_marginTop="8dp"
-        android:textSize="18sp"
+        android:textAppearance="@style/Text.Regular.18"
+        android:textColor="@color/sub_text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/next_alarm" />
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/main_screen_toolbar_menu" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

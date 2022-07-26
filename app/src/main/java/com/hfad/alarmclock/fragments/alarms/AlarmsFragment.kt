@@ -31,7 +31,7 @@ class AlarmsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_alarms_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_alarms, container, false)
 
         // Set the adapter
         val recyclerView = view.findViewById<RecyclerView>(R.id.list)
@@ -50,6 +50,10 @@ class AlarmsFragment : Fragment() {
                         Alarm(0, "11"),
                         Alarm(1, "22"),
                         Alarm(2, "33"),
+                        Alarm(3, "44"),
+                        Alarm(3, "44"),
+                        Alarm(3, "44"),
+                        Alarm(3, "44"),
                         Alarm(3, "44"),
                     )
                 )
