@@ -13,7 +13,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="64dp"
         android:text="Будильник через 8ч. 30 мин."
         android:textAlignment="center"
         android:textAppearance="@style/Text.RobotoLight.36"
@@ -26,7 +26,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="сб, 2 июл., 21:55"
         android:textAppearance="@style/Text.Regular.18"
         android:textColor="@color/sub_text_color"

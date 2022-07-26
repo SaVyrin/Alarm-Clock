@@ -5,4 +5,9 @@
 
     <color name="inactive_main_text_color">@color/gray_200</color>
     <color name="inactive_sub_text_color">@color/gray_400</color>
+
+
+    <color name="active_switch_track_stroke_color">@color/purple_220</color>
+    <color name="active_switch_track_color">@color/purple_300</color>
+    <color name="active_switch_thumb_stroke_color">@color/purple_250</color>
 </resources>
