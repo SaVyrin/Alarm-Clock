@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import com.hfad.alarmclock.databinding.FragmentAlarmsListItemBinding
 import com.hfad.alarmclock.fragments.Alarm
 
-class AlarmRecyclerViewAdapter(val clickListener: (taskId: Long) -> Unit) :
+class AlarmRecyclerViewAdapter(
+    private val clickListener: (taskId: Long) -> Unit
+) :
     ListAdapter<Alarm, AlarmRecyclerViewAdapter.AlarmViewHolder>(AlarmsDiffItemCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmViewHolder {
         return AlarmViewHolder.inflateFrom(parent)
@@ -18,7 +20,10 @@ class AlarmRecyclerViewAdapter(val clickListener: (taskId: Long) -> Unit) :
         holder.bind(item, clickListener)
     }
 
-    class AlarmViewHolder(val binding: FragmentAlarmsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class AlarmViewHolder(
+        private val binding: FragmentAlarmsListItemBinding
+    ) :
+        RecyclerView.ViewHolder(binding.root) {
 
         companion object {
             fun inflateFrom(parent: ViewGroup): AlarmViewHolder {
@@ -28,9 +33,17 @@ class AlarmRecyclerViewAdapter(val clickListener: (taskId: Long) -> Unit) :
             }
         }
 
-        fun bind(item: Alarm, clickListener: (taskId: Long) -> Unit) {
-            binding.alarm = item
-            binding.root.setOnClickListener { clickListener(item.id) }
+        fun bind(
+            alarm: Alarm,
+            clickListener: (taskId: Long) -> Unit
+        ) {
+            with(binding) {
+                alarmTitleTv.text = alarm.title
+                alarmTimeTv.text = alarm.time
+                alarmDateTv.text = alarm.date
+                alarmSwitch.isChecked = alarm.isActive
+                root.setOnClickListener { clickListener(alarm.id) }
+            }
         }
     }
 }

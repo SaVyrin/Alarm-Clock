@@ -1,80 +1,52 @@
 package com.hfad.alarmclock.fragments.alarms
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.hfad.alarmclock.R
+import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
 import com.hfad.alarmclock.fragments.Alarm
 
-/**
- * A fragment representing a list of Items.
- */
 class AlarmsFragment : Fragment() {
 
-    private var columnCount = 1
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
-    }
+    private var _binding: FragmentAlarmsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_alarms, container, false)
+    ): View {
+        _binding = FragmentAlarmsBinding.inflate(inflater, container, false)
 
-        // Set the adapter
-        val recyclerView = view.findViewById<RecyclerView>(R.id.list)
-        if (recyclerView is RecyclerView) {
-            with(recyclerView) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                val alarmAdapter = AlarmRecyclerViewAdapter {
-                    val action = AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment()
-                    this.findNavController().navigate(action)
-                }
-                alarmAdapter.submitList(
-                    listOf(
-                        Alarm(0, "11"),
-                        Alarm(1, "22"),
-                        Alarm(2, "33"),
-                        Alarm(3, "44"),
-                        Alarm(3, "44"),
-                        Alarm(3, "44"),
-                        Alarm(3, "44"),
-                        Alarm(3, "44"),
-                    )
-                )
-                adapter = alarmAdapter
+        with(binding.list) {
+            val alarmAdapter = AlarmRecyclerViewAdapter {
+                val action = AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment()
+                this.findNavController().navigate(action)
             }
+            adapter = alarmAdapter
+
+            alarmAdapter.submitList(
+                listOf(
+                    Alarm(1, "11", "06:35", "пт, 10 июня", true),
+                    Alarm(2, "22", "07:35", "пт, 10 июня", false),
+                    Alarm(3, "33", "07:36", "пт, 10 июня", false),
+                    Alarm(4, "44", "08:35", "пт, 10 июня", false),
+                    Alarm(5, "55", "09:35", "пт, 10 июня", false),
+                    Alarm(6, "66", "10:40", "пт, 10 июня", true),
+                    Alarm(7, "77", "10:35", "пт, 10 июня", true),
+                    Alarm(8, "88", "11:35", "пт, 10 июня", true),
+                    Alarm(9, "99", "12:35", "пт, 10 июня", true),
+                )
+            )
         }
-        return view
+
+        return binding.root
     }
 
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            AlarmsFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

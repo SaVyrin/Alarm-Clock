@@ -9,8 +9,6 @@ class AlarmsDiffItemCallback: DiffUtil.ItemCallback<Alarm>() {
     }
 
     override fun areContentsTheSame(oldItem: Alarm, newItem: Alarm): Boolean {
-        val timeIsSame = (oldItem.time == newItem.time)
-        val descriptionIsSame = (oldItem.description == newItem.description)
-        return (timeIsSame and descriptionIsSame)
+        return oldItem == newItem
     }
 }
