@@ -1,4 +1,4 @@
-package com.hfad.alarmclock.fragments
+package com.hfad.alarmclock.ui.fragments
 
 data class Alarm(
     val id: Long = 0L,

@@ -1,4 +1,4 @@
-package com.hfad.alarmclock.fragments.alarms
+package com.hfad.alarmclock.ui.fragments.alarms
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
-import com.hfad.alarmclock.fragments.Alarm
+import com.hfad.alarmclock.ui.fragments.Alarm
 
 class AlarmsFragment : Fragment() {
 
@@ -19,12 +19,25 @@ class AlarmsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAlarmsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewAdapter()
+    }
+
+    private fun setRecyclerViewAdapter() {
         with(binding.list) {
-            val alarmAdapter = AlarmRecyclerViewAdapter {
-                val action = AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment()
-                this.findNavController().navigate(action)
-            }
+            val alarmAdapter = AlarmRecyclerViewAdapter(
+                switchClickListener = {
+
+                },
+                navigateClickListener = {
+                    val action = AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment()
+                    this.findNavController().navigate(action)
+                }
+            )
             adapter = alarmAdapter
 
             alarmAdapter.submitList(
@@ -41,8 +54,6 @@ class AlarmsFragment : Fragment() {
                 )
             )
         }
-
-        return binding.root
     }
 
     override fun onDestroy() {
