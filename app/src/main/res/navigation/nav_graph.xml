@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/alarmsFragment"
-        android:name="com.hfad.alarmclock.fragments.alarms.AlarmsFragment"
+        android:name="com.hfad.alarmclock.ui.fragments.alarms.AlarmsFragment"
         android:label="fragment_alarms_list"
         tools:layout="@layout/fragment_alarms" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/editAlarmFragment"
-        android:name="com.hfad.alarmclock.fragments.editalarm.EditAlarmFragment"
+        android:name="com.hfad.alarmclock.ui.fragments.editalarm.EditAlarmFragment"
         android:label="fragment_edit_alarm"
         tools:layout="@layout/fragment_edit_alarm" />
 </navigation>

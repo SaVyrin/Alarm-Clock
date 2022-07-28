@@ -1,7 +1,8 @@
-package com.hfad.alarmclock
+package com.hfad.alarmclock.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.hfad.alarmclock.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
