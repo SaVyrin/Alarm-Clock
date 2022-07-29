@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
-import com.hfad.alarmclock.ui.fragments.Alarm
+import com.hfad.alarmclock.data.database.Alarm
 
 class AlarmsFragment : Fragment() {
 

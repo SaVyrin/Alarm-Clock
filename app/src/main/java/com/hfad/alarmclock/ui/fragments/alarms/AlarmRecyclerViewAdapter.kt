@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.hfad.alarmclock.databinding.FragmentAlarmsListItemBinding
-import com.hfad.alarmclock.ui.fragments.Alarm
+import com.hfad.alarmclock.data.database.Alarm
 
 class AlarmRecyclerViewAdapter(
     private val switchClickListener: (taskId: Long) -> Unit,
