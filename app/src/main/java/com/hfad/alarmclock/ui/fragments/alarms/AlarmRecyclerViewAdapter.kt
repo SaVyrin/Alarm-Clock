@@ -8,8 +8,8 @@ import com.hfad.alarmclock.databinding.FragmentAlarmsListItemBinding
 import com.hfad.alarmclock.data.database.Alarm
 
 class AlarmRecyclerViewAdapter(
-    private val switchClickListener: (taskId: Long) -> Unit,
-    private val navigateClickListener: (taskId: Long) -> Unit
+    private val switchClickListener: (alarmId: Long) -> Unit,
+    private val navigateClickListener: (alarmId: Long) -> Unit
 ) :
     ListAdapter<Alarm, AlarmRecyclerViewAdapter.AlarmViewHolder>(AlarmsDiffItemCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmViewHolder {
@@ -36,8 +36,8 @@ class AlarmRecyclerViewAdapter(
 
         fun bind(
             alarm: Alarm,
-            switchClickListener: (taskId: Long) -> Unit,
-            navigateClickListener: (taskId: Long) -> Unit
+            switchClickListener: (alarmId: Long) -> Unit,
+            navigateClickListener: (alarmId: Long) -> Unit
         ) {
             with(binding) {
                 alarmTitleTv.text = alarm.title

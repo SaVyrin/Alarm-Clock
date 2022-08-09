@@ -30,8 +30,8 @@ class AlarmsFragment : Fragment() {
     private fun setRecyclerViewAdapter() {
         with(binding.list) {
             val alarmAdapter = AlarmRecyclerViewAdapter(
-                switchClickListener = {
-
+                switchClickListener = { alarmId ->
+                    // TODO change alarm status
                 },
                 navigateClickListener = {
                     val action = AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment()
