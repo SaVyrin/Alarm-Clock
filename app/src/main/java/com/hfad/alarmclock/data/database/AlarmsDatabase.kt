@@ -9,6 +9,6 @@ import androidx.room.RoomDatabase
     version = 1,
     exportSchema = false
 )
-abstract class Database : RoomDatabase() {
+abstract class AlarmsDatabase : RoomDatabase() {
     abstract val alarmDao: AlarmDao
 }

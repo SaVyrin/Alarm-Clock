@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
 import com.hfad.alarmclock.data.database.Alarm
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlarmsFragment : Fragment() {
 
     private var _binding: FragmentAlarmsBinding? = null
@@ -30,8 +32,8 @@ class AlarmsFragment : Fragment() {
     private fun setRecyclerViewAdapter() {
         with(binding.list) {
             val alarmAdapter = AlarmRecyclerViewAdapter(
-                switchClickListener = {
-
+                switchClickListener = { alarmId ->
+                    // TODO change alarm status
                 },
                 navigateClickListener = {
                     val action = AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment()
