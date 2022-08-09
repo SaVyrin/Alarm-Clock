@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
 import com.hfad.alarmclock.data.database.Alarm
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlarmsFragment : Fragment() {
 
     private var _binding: FragmentAlarmsBinding? = null

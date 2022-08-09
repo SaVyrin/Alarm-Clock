@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hfad.alarmclock.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditAlarmFragment : Fragment() {
 
     override fun onCreateView(
