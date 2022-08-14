@@ -8,7 +8,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AlarmsViewModel
 @Inject constructor(
-    private val alarmDao: AlarmDao
+    alarmDao: AlarmDao
 ) : ViewModel() {
 
     val alarms = alarmDao.getAll()

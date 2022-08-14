@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.hfad.alarmclock.R
 import com.hfad.alarmclock.data.database.Alarm
 import com.hfad.alarmclock.databinding.FragmentEditAlarmBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,5 +44,10 @@ class EditAlarmFragment : Fragment() {
         binding.notSaveBtn.setOnClickListener {
             findNavController().popBackStack()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
