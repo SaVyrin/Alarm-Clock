@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.hfad.alarmclock.databinding.FragmentAlarmsListItemBinding
 import com.hfad.alarmclock.data.database.Alarm
+import com.hfad.alarmclock.utils.AlarmsDiffItemCallback
 
 class AlarmRecyclerViewAdapter(
     private val switchClickListener: (alarmId: Long) -> Unit,
@@ -39,14 +40,37 @@ class AlarmRecyclerViewAdapter(
             switchClickListener: (alarmId: Long) -> Unit,
             navigateClickListener: (alarmId: Long) -> Unit
         ) {
-            with(binding) {
-                alarmTitleTv.text = alarm.title
-                alarmTimeTv.text = alarm.time
-                alarmDateTv.text = alarm.date
-                alarmSwitch.isChecked = alarm.isActive
-                alarmSwitch.setOnClickListener { switchClickListener(alarm.id) }
-                root.setOnClickListener { navigateClickListener(alarm.id) }
-            }
+            setAlarmTitle(alarm)
+            setAlarmDate(alarm)
+            setAlarmStatus(alarm)
+            setAlarmStatusSwitchClickListener(alarm, switchClickListener)
+            setAlarmNavigateClickListener(alarm, navigateClickListener)
+        }
+
+        private fun setAlarmTitle(alarm: Alarm) {
+            binding.alarmTimeTv.text = alarm.time
+        }
+
+        private fun setAlarmDate(alarm: Alarm) {
+            binding.alarmDateTv.text = alarm.date
+        }
+
+        private fun setAlarmStatus(alarm: Alarm) {
+            binding.alarmSwitch.isChecked = alarm.isActive
+        }
+
+        private fun setAlarmStatusSwitchClickListener(
+            alarm: Alarm,
+            switchClickListener: (alarmId: Long) -> Unit
+        ) {
+            binding.alarmSwitch.setOnClickListener { switchClickListener(alarm.id) }
+        }
+
+        private fun setAlarmNavigateClickListener(
+            alarm: Alarm,
+            navigateClickListener: (alarmId: Long) -> Unit
+        ) {
+            binding.root.setOnClickListener { navigateClickListener(alarm.id) }
         }
     }
 }

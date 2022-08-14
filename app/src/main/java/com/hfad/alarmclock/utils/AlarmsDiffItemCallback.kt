@@ -1,4 +1,4 @@
-package com.hfad.alarmclock.ui.fragments.alarms
+package com.hfad.alarmclock.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.hfad.alarmclock.data.database.Alarm

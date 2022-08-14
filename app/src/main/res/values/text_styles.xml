@@ -23,4 +23,13 @@
     <style name="Text.Regular.18">
         <item name="android:textSize">18sp</item>
     </style>
+
+
+    <style name="Text.Bold">
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="Text.Bold.20">
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>
