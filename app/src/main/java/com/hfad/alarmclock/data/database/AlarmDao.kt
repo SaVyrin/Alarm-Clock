@@ -14,8 +14,8 @@ interface AlarmDao {
     @Delete
     suspend fun delete(alarm: Alarm)
 
-    @Query("SELECT * FROM alarm_table LIMIT 1")
-    fun get(): LiveData<Alarm>
+    @Query("SELECT * FROM alarm_table")
+    fun getAll(): LiveData<List<Alarm>>
 
     @Query("DELETE FROM alarm_table")
     suspend fun deleteAll()
