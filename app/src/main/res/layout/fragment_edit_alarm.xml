@@ -125,7 +125,7 @@
         app:layout_constraintGuide_percent="0.4" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton2"
+        android:id="@+id/not_save_btn"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,14 +135,14 @@
         android:textAppearance="@style/Text.Bold.20"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/materialButton"
+        app:layout_constraintEnd_toStartOf="@+id/save_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/transparent"
         app:strokeWidth="0dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/save_btn"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -152,8 +152,8 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/materialButton2"
-        app:layout_constraintTop_toTopOf="@+id/materialButton2"
+        app:layout_constraintStart_toEndOf="@+id/not_save_btn"
+        app:layout_constraintTop_toTopOf="@+id/not_save_btn"
         app:strokeColor="@color/transparent"
         app:strokeWidth="0dp" />
 
