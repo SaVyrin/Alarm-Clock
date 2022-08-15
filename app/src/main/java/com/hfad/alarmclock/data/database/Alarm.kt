@@ -2,6 +2,7 @@ package com.hfad.alarmclock.data.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 
@@ -21,5 +22,8 @@ data class Alarm(
     var date: String = "",
 
     @ColumnInfo(name = "isActive")
-    var isActive: Boolean = false
+    var isActive: Boolean = false,
+
+    @Ignore
+    var changeStatus: Boolean = false
 )

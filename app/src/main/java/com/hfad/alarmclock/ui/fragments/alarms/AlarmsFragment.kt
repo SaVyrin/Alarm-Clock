@@ -2,11 +2,13 @@ package com.hfad.alarmclock.ui.fragments.alarms
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.hfad.alarmclock.R
 import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,6 +20,8 @@ class AlarmsFragment : Fragment() {
     private var _binding: FragmentAlarmsBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var recyclerViewAdapter: AlarmRecyclerViewAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +32,26 @@ class AlarmsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setMenuClickListener()
         setRecyclerViewAdapter()
+        observeAlarms()
+    }
+
+    private fun setMenuClickListener() {
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.change -> {
+                    recyclerViewAdapter.currentList.forEach { alarm ->
+                        alarm?.also {
+                            it.changeStatus = !it.changeStatus
+                        }
+                    }
+                    recyclerViewAdapter.notifyDataSetChanged()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun setRecyclerViewAdapter() {
@@ -43,12 +66,21 @@ class AlarmsFragment : Fragment() {
                 }
             )
             adapter = alarmAdapter
-            observeAlarms(alarmAdapter)
+            recyclerViewAdapter = alarmAdapter
+            observeAlarmsToChange(alarmAdapter)
         }
     }
 
-    private fun observeAlarms(adapter: AlarmRecyclerViewAdapter) {
+    private fun observeAlarms() {
         viewModel.alarms.observe(viewLifecycleOwner) { alarms ->
+            alarms?.also {
+                viewModel.alarmsToChange.value = alarms
+            }
+        }
+    }
+
+    private fun observeAlarmsToChange(adapter: AlarmRecyclerViewAdapter) {
+        viewModel.alarmsToChange.observe(viewLifecycleOwner) { alarms ->
             alarms?.also {
                 adapter.submitList(alarms)
             }

@@ -17,24 +17,37 @@
         android:paddingEnd="16dp"
         android:paddingBottom="20dp">
 
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/select_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/alarm_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="Билет"
             android:textAppearance="@style/Text.Regular.14"
             android:textColor="@color/inactive_main_text_color"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/select_checkbox"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/alarm_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="06:30"
             android:textAppearance="@style/Text.RobotoLight.36"
             android:textColor="@color/inactive_main_text_color"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/select_checkbox"
             app:layout_constraintTop_toBottomOf="@+id/alarm_title_tv" />
 
         <TextView

@@ -3,6 +3,7 @@ package com.hfad.alarmclock.ui.fragments.alarms
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import com.hfad.alarmclock.databinding.FragmentAlarmsListItemBinding
 import com.hfad.alarmclock.data.database.Alarm
@@ -20,6 +21,10 @@ class AlarmRecyclerViewAdapter(
     override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item, switchClickListener, navigateClickListener)
+    }
+
+    fun setChangeStatus() {
+
     }
 
     class AlarmViewHolder(
@@ -43,6 +48,7 @@ class AlarmRecyclerViewAdapter(
             setAlarmTitle(alarm)
             setAlarmDate(alarm)
             setAlarmStatus(alarm)
+            setChangeStatus(alarm)
             setAlarmStatusSwitchClickListener(alarm, switchClickListener)
             setAlarmNavigateClickListener(alarm, navigateClickListener)
         }
@@ -57,6 +63,10 @@ class AlarmRecyclerViewAdapter(
 
         private fun setAlarmStatus(alarm: Alarm) {
             binding.alarmSwitch.isChecked = alarm.isActive
+        }
+
+        private fun setChangeStatus(alarm: Alarm) {
+            binding.selectCheckbox.isVisible = alarm.changeStatus
         }
 
         private fun setAlarmStatusSwitchClickListener(
