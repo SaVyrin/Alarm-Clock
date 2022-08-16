@@ -25,5 +25,8 @@ data class Alarm(
     var isActive: Boolean = false,
 
     @Ignore
-    var changeStatus: Boolean = false
+    var changeStatus: Boolean = false,
+
+    @Ignore
+    var isSelected: Boolean = false
 )

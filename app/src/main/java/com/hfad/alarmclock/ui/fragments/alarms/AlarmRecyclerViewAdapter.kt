@@ -23,10 +23,6 @@ class AlarmRecyclerViewAdapter(
         holder.bind(item, switchClickListener, navigateClickListener)
     }
 
-    fun setChangeStatus() {
-
-    }
-
     class AlarmViewHolder(
         private val binding: FragmentAlarmsListItemBinding
     ) :
@@ -51,6 +47,9 @@ class AlarmRecyclerViewAdapter(
             setChangeStatus(alarm)
             setAlarmStatusSwitchClickListener(alarm, switchClickListener)
             setAlarmNavigateClickListener(alarm, navigateClickListener)
+            binding.selectCheckbox.setOnClickListener {
+                alarm.isSelected = !alarm.isSelected
+            }
         }
 
         private fun setAlarmTitle(alarm: Alarm) {

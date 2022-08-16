@@ -14,6 +14,9 @@ interface AlarmDao {
     @Delete
     suspend fun delete(alarm: Alarm)
 
+    @Delete
+    suspend fun delete(alarms: List<Alarm>)
+
     @Query("SELECT * FROM alarm_table")
     fun getAll(): LiveData<List<Alarm>>
 

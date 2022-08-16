@@ -2,15 +2,17 @@ package com.hfad.alarmclock.ui.fragments.alarms
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.hfad.alarmclock.data.database.Alarm
 import com.hfad.alarmclock.data.database.AlarmDao
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AlarmsViewModel
 @Inject constructor(
-    alarmDao: AlarmDao
+    private val alarmDao: AlarmDao
 ) : ViewModel() {
 
     val alarms = alarmDao.getAll()
@@ -28,5 +30,12 @@ class AlarmsViewModel
             )
         }
         alarmsToChange.value = newAlarms
+    }
+
+    fun deleteAlarms(alarms: List<Alarm>) {
+        val alarmsToDelete = alarms.filter { it.isSelected }
+        viewModelScope.launch {
+            alarmDao.delete(alarmsToDelete)
+        }
     }
 }

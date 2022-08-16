@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -35,6 +36,7 @@ class AlarmsFragment : Fragment() {
         setMenuClickListener()
         setRecyclerViewAdapter()
         observeAlarms()
+        setAlarmDeleteButtonClickListener()
     }
 
     private fun setMenuClickListener() {
@@ -43,10 +45,11 @@ class AlarmsFragment : Fragment() {
                 R.id.change -> {
                     recyclerViewAdapter.currentList.forEach { alarm ->
                         alarm?.also {
-                            it.changeStatus = !it.changeStatus
+                            it.changeStatus = true
                         }
                     }
                     recyclerViewAdapter.notifyDataSetChanged()
+                    binding.alarmDeleteBtn.isVisible = true
                     true
                 }
                 else -> false
@@ -71,6 +74,14 @@ class AlarmsFragment : Fragment() {
         }
     }
 
+    private fun observeAlarmsToChange(adapter: AlarmRecyclerViewAdapter) {
+        viewModel.alarmsToChange.observe(viewLifecycleOwner) { alarms ->
+            alarms?.also {
+                adapter.submitList(alarms)
+            }
+        }
+    }
+
     private fun observeAlarms() {
         viewModel.alarms.observe(viewLifecycleOwner) { alarms ->
             alarms?.also {
@@ -79,11 +90,18 @@ class AlarmsFragment : Fragment() {
         }
     }
 
-    private fun observeAlarmsToChange(adapter: AlarmRecyclerViewAdapter) {
-        viewModel.alarmsToChange.observe(viewLifecycleOwner) { alarms ->
-            alarms?.also {
-                adapter.submitList(alarms)
+    private fun setAlarmDeleteButtonClickListener() {
+        binding.alarmDeleteBtn.setOnClickListener { button ->
+            // TODO вынести в отдельный метод
+            viewModel.deleteAlarms(recyclerViewAdapter.currentList)
+            recyclerViewAdapter.currentList.forEach { alarm ->
+                alarm?.also {
+                    it.changeStatus = false
+                    it.isSelected = false
+                }
             }
+            recyclerViewAdapter.notifyDataSetChanged()
+            button.isVisible = false
         }
     }
 
