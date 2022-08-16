@@ -8,7 +8,7 @@
     tools:context=".ui.fragments.editalarm.EditAlarmFragment">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/alarm_hours_edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="time"
@@ -29,14 +29,14 @@
         android:layout_marginEnd="12dp"
         android:text=":"
         android:textSize="72sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintBottom_toBottomOf="@+id/alarm_hours_edt"
+        app:layout_constraintEnd_toStartOf="@+id/alarm_minutes_edt"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/alarm_hours_edt"
+        app:layout_constraintTop_toTopOf="@+id/alarm_hours_edt" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/alarm_minutes_edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="time"
@@ -54,7 +54,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/materialButton2"
+        app:layout_constraintBottom_toTopOf="@+id/not_save_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline">
@@ -108,6 +108,7 @@
             </com.google.android.material.chip.ChipGroup>
 
             <EditText
+                android:id="@+id/alarm_description_edt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
