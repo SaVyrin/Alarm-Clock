@@ -1,21 +1,32 @@
 package com.hfad.alarmclock.ui.fragments.editalarm
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hfad.alarmclock.data.database.Alarm
 import com.hfad.alarmclock.data.database.AlarmDao
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class EditAlarmViewModel @Inject constructor(
+class EditAlarmViewModel(
+    alarmId: Long,
     private val alarmDao: AlarmDao
 ) : ViewModel() {
 
-    fun saveAlarm(alarm: Alarm) {
+    val alarm: LiveData<Alarm> = when (alarmId >= 0) {
+        true -> alarmDao.get(alarmId)
+        else -> MutableLiveData(Alarm())
+    }
+
+    fun changeAlarmDescription(newDescription: String) {
+        alarm.value?.apply {
+            title = newDescription
+        }
+    }
+
+    fun saveAlarm() {
         viewModelScope.launch {
-            alarmDao.insert(alarm)
+            alarmDao.insert(alarm.value ?: Alarm())
         }
     }
 }

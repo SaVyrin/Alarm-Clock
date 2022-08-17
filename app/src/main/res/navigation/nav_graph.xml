@@ -18,5 +18,10 @@
         android:id="@+id/editAlarmFragment"
         android:name="com.hfad.alarmclock.ui.fragments.editalarm.EditAlarmFragment"
         android:label="fragment_edit_alarm"
-        tools:layout="@layout/fragment_edit_alarm" />
+        tools:layout="@layout/fragment_edit_alarm" >
+        <argument
+            android:name="alarmId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
 </navigation>

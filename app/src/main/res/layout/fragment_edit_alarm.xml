@@ -8,18 +8,18 @@
     tools:context=".ui.fragments.editalarm.EditAlarmFragment">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/alarm_hours_edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="time"
-        android:text="2"
         android:textSize="72sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2" />
 
     <TextView
         android:id="@+id/textView2"
@@ -29,24 +29,24 @@
         android:layout_marginEnd="12dp"
         android:text=":"
         android:textSize="72sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintBottom_toBottomOf="@+id/alarm_hours_edt"
+        app:layout_constraintEnd_toStartOf="@+id/alarm_minutes_edt"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/alarm_hours_edt"
+        app:layout_constraintTop_toTopOf="@+id/alarm_hours_edt" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/alarm_minutes_edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="time"
-        android:text="00"
         android:textSize="72sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="00" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
@@ -54,7 +54,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/materialButton2"
+        app:layout_constraintBottom_toTopOf="@+id/not_save_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline">
@@ -108,12 +108,13 @@
             </com.google.android.material.chip.ChipGroup>
 
             <EditText
+                android:id="@+id/alarm_description_edt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Alarm description"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:text="Alarm description" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -127,7 +128,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/not_save_btn"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Отмена"
@@ -136,24 +137,24 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/save_btn"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="@color/black"
         app:strokeColor="@color/transparent"
         app:strokeWidth="0dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_btn"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Сохранить"
         android:textAllCaps="false"
         android:textAppearance="@style/Text.Bold.20"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/not_save_btn"
+        app:layout_constraintStart_toEndOf="@id/not_save_btn"
         app:layout_constraintTop_toTopOf="@+id/not_save_btn"
+        app:rippleColor="@color/black"
         app:strokeColor="@color/transparent"
         app:strokeWidth="0dp" />
 

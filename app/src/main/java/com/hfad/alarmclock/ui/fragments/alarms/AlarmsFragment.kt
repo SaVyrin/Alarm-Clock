@@ -2,13 +2,13 @@ package com.hfad.alarmclock.ui.fragments.alarms
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.hfad.alarmclock.R
 import com.hfad.alarmclock.databinding.FragmentAlarmsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,6 +42,10 @@ class AlarmsFragment : Fragment() {
     private fun setMenuClickListener() {
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
+                R.id.add -> {
+                    findNavController().navigate(R.id.action_alarmsFragment_to_editAlarmFragment)
+                    true
+                }
                 R.id.change -> {
                     recyclerViewAdapter.currentList.forEach { alarm ->
                         alarm?.also {
@@ -63,9 +67,10 @@ class AlarmsFragment : Fragment() {
                 switchClickListener = { alarmId ->
                     // TODO change alarm status
                 },
-                navigateClickListener = {
-                    val action = AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment()
-                    this.findNavController().navigate(action)
+                navigateClickListener = { alarmId ->
+                    val action =
+                        AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment(alarmId)
+                    findNavController().navigate(action)
                 }
             )
             adapter = alarmAdapter
