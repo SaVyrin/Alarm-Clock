@@ -18,9 +18,15 @@ class EditAlarmViewModel(
         else -> MutableLiveData(Alarm())
     }
 
-    fun saveAlarm(alarm: Alarm) {
+    fun changeAlarmDescription(newDescription: String) {
+        alarm.value?.apply {
+            title = newDescription
+        }
+    }
+
+    fun saveAlarm() {
         viewModelScope.launch {
-            alarmDao.insert(alarm)
+            alarmDao.insert(alarm.value ?: Alarm())
         }
     }
 }

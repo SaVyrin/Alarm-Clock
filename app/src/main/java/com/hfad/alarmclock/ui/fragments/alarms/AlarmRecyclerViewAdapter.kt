@@ -41,6 +41,7 @@ class AlarmRecyclerViewAdapter(
             switchClickListener: (alarmId: Long) -> Unit,
             navigateClickListener: (alarmId: Long) -> Unit
         ) {
+            setAlarmTime(alarm)
             setAlarmTitle(alarm)
             setAlarmDate(alarm)
             setAlarmStatus(alarm)
@@ -49,11 +50,16 @@ class AlarmRecyclerViewAdapter(
             setAlarmNavigateClickListener(alarm, navigateClickListener)
             binding.selectCheckbox.setOnClickListener {
                 alarm.isSelected = !alarm.isSelected
+                binding.selectCheckbox.isSelected = alarm.isSelected
             }
         }
 
-        private fun setAlarmTitle(alarm: Alarm) {
+        private fun setAlarmTime(alarm: Alarm) {
             binding.alarmTimeTv.text = alarm.time
+        }
+
+        private fun setAlarmTitle(alarm: Alarm) {
+            binding.alarmTitleTv.text = alarm.title
         }
 
         private fun setAlarmDate(alarm: Alarm) {

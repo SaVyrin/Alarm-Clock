@@ -67,8 +67,9 @@ class AlarmsFragment : Fragment() {
                 switchClickListener = { alarmId ->
                     // TODO change alarm status
                 },
-                navigateClickListener = {
-                    val action = AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment()
+                navigateClickListener = { alarmId ->
+                    val action =
+                        AlarmsFragmentDirections.actionAlarmsFragmentToEditAlarmFragment(alarmId)
                     findNavController().navigate(action)
                 }
             )

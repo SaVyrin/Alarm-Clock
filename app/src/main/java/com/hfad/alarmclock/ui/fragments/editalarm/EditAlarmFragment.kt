@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.hfad.alarmclock.data.database.Alarm
 import com.hfad.alarmclock.data.database.AlarmDao
 import com.hfad.alarmclock.databinding.FragmentEditAlarmBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +36,7 @@ class EditAlarmFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeAlarm()
+        setAlarmDescriptionChangeListener()
         setSaveButtonClickListener()
         setNotSaveButtonClickListener()
     }
@@ -58,9 +59,15 @@ class EditAlarmFragment : Fragment() {
         }
     }
 
+    private fun setAlarmDescriptionChangeListener() {
+        binding.alarmDescriptionEdt.doOnTextChanged { text, _, _, _ ->
+            viewModel.changeAlarmDescription(text.toString())
+        }
+    }
+
     private fun setSaveButtonClickListener() {
         binding.saveBtn.setOnClickListener {
-            viewModel.saveAlarm(Alarm())
+            viewModel.saveAlarm()
             findNavController().popBackStack()
         }
     }
